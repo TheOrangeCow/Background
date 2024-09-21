@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TheOrangeCow</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            background-color: black;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <button onclick="loadScript('dot.js')">Background</button>
+    <button onclick="loadScript('patricals.js')">Particles</button>
+    <button onclick="loadScript('dots_magnetic.js')">dots_magnetic</button>
+    <script>
+        function loadScript(src) {
+            const canvas = document.getElementById('canvas');
+            const context = canvas.getContext('2d');
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            const script = document.createElement('script');
+            script.src = src;
+            document.body.appendChild(script);
+        }
+        loadScript('dot.js');
+    </script>
+</body>
+</html>
