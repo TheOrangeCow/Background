@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TheOrangeCow</title>
-    <link rel="stylesheet" href ="style.css"/>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <canvas  class= "back" id="canvas"></canvas>
-    <div class= "con">
+    <canvas class="back" id="canvas"></canvas>
+    <div class="con">
         <h1>Backgrounds</h1>
         <button onclick="loadScript('dot.js')">Dots</button><br>
         <button onclick="loadScript('particles.js')">Particles</button><br>
-        <button onclick="loadScript('dot_magnet.js')">Dots magnet</button><br>
+        <button onclick="loadScript('dot_magnet.js')">Dots Magnet</button><br>
         <br>
-        <a href = "https://github.com/TheOrangeCow/Background/">View the code</a>
-        <a href = "https://theorangecow.github.io">Back Home</a>
-        <script id ="script" src ="dot.js"></script>
+        <a href="https://github.com/TheOrangeCow/Background/">View the code</a>
+        <a href="https://theorangecow.github.io">Back Home</a>
     </div>
     <script>
+        let currentScript = null;
+
         function loadScript(src) {
-            document.getElementById('script').remove();
+            if (currentScript) {
+                currentScript.remove();
+            }
             const script = document.createElement('script');
             script.src = src;
-            script.id= "script";
+            script.onload = () => currentScript = script;
             document.body.appendChild(script);
         }
-    </script>
 
+        loadScript('dot.js');
+    </script>
 </body>
 </html>
