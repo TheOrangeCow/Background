@@ -26,18 +26,10 @@
         function loadScript() {
             const scriptName = getCookie("script");
             if (scriptName) {
-                const existingCanvas = document.getElementById("canvas");
-                if (existingCanvas) existingCanvas.remove();
-
-                const newCanvas = document.createElement('canvas');
-                newCanvas.id = "canvas";
-                document.body.appendChild(newCanvas);
-
                 const script = document.createElement('script');
                 script.src = scriptName;
                 document.body.appendChild(script);
 
-                // Clear the cookie after loading
                 document.cookie = "script=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             }
         }
