@@ -100,7 +100,7 @@ function animate() {
 }
 
 window.addEventListener('resize', resizeCanvas);
-canvas.addEventListener('mousemove', (event) => {
+window.addEventListener('mousemove', (event) => {
   const rect = canvas.getBoundingClientRect();
   mouseX = event.clientX - rect.left;
   mouseY = event.clientY - rect.top;

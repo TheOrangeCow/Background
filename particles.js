@@ -55,5 +55,5 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-canvas.addEventListener('mousemove', createParticles);
+window.addEventListener('mousemove', createParticles);
 animate();

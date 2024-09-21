@@ -10,20 +10,22 @@
     <canvas  class= "back" id="canvas"></canvas>
     <div class= "con">
         <h1>Backgrounds</h1>
-        <button onclick="loadScript('dot.js')">Background</button>
-        <button onclick="loadScript('particles.js')">Particles</button>
-        <button onclick="loadScript('dot_magnet.js')">Dots magnet</button>
+        <button onclick="loadScript('dot.js')">Dots</button><br>
+        <button onclick="loadScript('particles.js')">Particles</button><br>
+        <button onclick="loadScript('dot_magnet.js')">Dots magnet</button><br>
         <br>
         <a href = "https://github.com/TheOrangeCow/Background/">View the code</a>
         <a href = "https://theorangecow.github.io">Back Home</a>
     </div>
     <script>
         function loadScript(src) {
+            document.getElementById('script').remove();
             const canvas = document.getElementById('canvas');
             const context = canvas.getContext('2d');
             context.clearRect(0, 0, canvas.width, canvas.height);
             const script = document.createElement('script');
             script.src = src;
+            script.id= "script";
             document.body.appendChild(script);
         }
     </script>
