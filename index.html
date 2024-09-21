@@ -10,28 +10,46 @@
     <canvas class="back" id="canvas"></canvas>
     <div class="con">
         <h1>Backgrounds</h1>
-        <button onclick="loadScript('dot.js')">Dots</button><br>
-        <button onclick="loadScript('particles.js')">Particles</button><br>
-        <button onclick="loadScript('dot_magnet.js')">Dots Magnet</button><br>
+        <button onclick="setScriptAndRefresh('dot.js')">Dots</button><br>
+        <button onclick="setScriptAndRefresh('particles.js')">Particles</button><br>
+        <button onclick="setScriptAndRefresh('dot_magnet.js')">Dots Magnet</button><br>
         <br>
         <a href="https://github.com/TheOrangeCow/Background/">View the code</a>
         <a href="https://theorangecow.github.io">Back Home</a>
-        <script src="dot.js" id="script"></script>
     </div>
     <script>
-        function loadScript(src) {
-            document.getElementById("canvas").remove();
-            const script = document.createElement('script');
-            script.src = src + '?t=' + new Date().getTime(); // Cache buster
-            script.onload = () => {
-                const canvas = document.createElement('canvas');
-                canvas.id = "canvas";
-                document.body.appendChild(canvas);
-            };
-            document.body.appendChild(script);
+        function setScriptAndRefresh(scriptName) {
+            document.cookie = "script=" + scriptName + "; path=/";
+            location.reload();
         }
+
+        function loadScript() {
+            const scriptName = getCookie("script");
+            if (scriptName) {
+                const existingCanvas = document.getElementById("canvas");
+                if (existingCanvas) existingCanvas.remove();
+
+                const newCanvas = document.createElement('canvas');
+                newCanvas.id = "canvas";
+                document.body.appendChild(newCanvas);
+
+                const script = document.createElement('script');
+                script.src = scriptName;
+                document.body.appendChild(script);
+
+                // Clear the cookie after loading
+                document.cookie = "script=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            }
+        }
+
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Load the script on page load
+        window.onload = loadScript;
     </script>
-    
-    
 </body>
 </html>
