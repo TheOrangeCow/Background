@@ -16,24 +16,20 @@
         <br>
         <a href="https://github.com/TheOrangeCow/Background/">View the code</a>
         <a href="https://theorangecow.github.io">Back Home</a>
-        <script src ="dot.js" id ="script"></script>
+        <script src="dot.js" id="script"></script>
     </div>
     <script>
-
-
         function loadScript(src) {
             document.getElementById("canvas").remove();
             document.getElementById("script").remove();
             const canvas = document.createElement('canvas');
-            script.id = "canvas";
+            canvas.id = "canvas";
             document.body.appendChild(canvas);
             const script = document.createElement('script');
             script.src = src;
             script.id = "script";
             document.body.appendChild(script);
         }
-
-
     </script>
 </body>
 </html>
