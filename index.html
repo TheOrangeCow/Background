@@ -20,22 +20,18 @@
     </div>
     <script>
         function loadScript(src) {
-            const existingCanvas = document.getElementById("canvas");
-            if (existingCanvas) existingCanvas.remove();
-            
-            const existingScript = document.getElementById("script");
-            if (existingScript) existingScript.remove();
-            
-            const newCanvas = document.createElement('canvas');
-            newCanvas.id = "canvas";
-            document.body.appendChild(newCanvas);
-    
+            document.getElementById("canvas").remove();
             const script = document.createElement('script');
-            script.src = src;
-            script.id = "script";
+            script.src = src + '?t=' + new Date().getTime(); // Cache buster
+            script.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.id = "canvas";
+                document.body.appendChild(canvas);
+            };
             document.body.appendChild(script);
         }
     </script>
+    
     
 </body>
 </html>
