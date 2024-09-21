@@ -22,7 +22,11 @@
 
 
         function loadScript(src) {
+            document.getElementById("canvas").remove();
             document.getElementById("script").remove();
+            const canvas = document.createElement('canvas');
+            script.id = "canvas";
+            document.body.appendChild(canvas);
             const script = document.createElement('script');
             script.src = src;
             script.id = "script";

@@ -25,7 +25,7 @@ body {
     overflow-y: scroll;
 }
 
-.back {
+canvas {
     position: relative;
     cursor: default;
 }
