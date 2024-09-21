@@ -16,29 +16,20 @@
         <br>
         <a href="https://github.com/TheOrangeCow/Background/">View the code</a>
         <a href="https://theorangecow.github.io">Back Home</a>
+        <script src ="dot.js" id ="script"></script>
     </div>
     <script>
-        let currentScript;
+
 
         function loadScript(src) {
-            if (currentScript) {
-                currentScript.remove();
-            }
+            document.getElementById("script").remove();
             const script = document.createElement('script');
             script.src = src;
-            script.onload = () => {
-                const canvas = document.getElementById('canvas');
-                const context = canvas.getContext('2d');
-                // Initialize your script with the current canvas and context
-                if (typeof init === 'function') {
-                    init(canvas, context);
-                }
-            };
-            currentScript = script;
+            script.id = "script";
             document.body.appendChild(script);
         }
 
-        loadScript('dot.js'); // Initial script
+
     </script>
 </body>
 </html>
