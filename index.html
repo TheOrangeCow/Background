@@ -20,16 +20,22 @@
     </div>
     <script>
         function loadScript(src) {
-            document.getElementById("canvas").remove();
-            document.getElementById("script").remove();
-            const canvas = document.createElement('canvas');
-            canvas.id = "canvas";
-            document.body.appendChild(canvas);
+            const existingCanvas = document.getElementById("canvas");
+            if (existingCanvas) existingCanvas.remove();
+            
+            const existingScript = document.getElementById("script");
+            if (existingScript) existingScript.remove();
+            
+            const newCanvas = document.createElement('canvas');
+            newCanvas.id = "canvas";
+            document.body.appendChild(newCanvas);
+    
             const script = document.createElement('script');
             script.src = src;
             script.id = "script";
             document.body.appendChild(script);
         }
     </script>
+    
 </body>
 </html>
